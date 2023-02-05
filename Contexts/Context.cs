@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentPlusDemoProject.Context
+namespace StudentPlusDemoProject.Contexts
 {
     internal class StudentContext : DbContext
     {
@@ -18,9 +18,21 @@ namespace StudentPlusDemoProject.Context
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Absenteeism> Absenteeism { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<ContactInfo> Contacts { get; set; }
+        public DbSet<Gender> Genders { get; set; }
+        public DbSet<Grade> Grades { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<PersonInfo> PersonInfos { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server = localhost; Port = 5432; Database = StudentPlusDb; User Id = postgres; Password = 123;"); //ConfigurationManager.AppSettings.Get("PgSqlConnectionString")
+            optionsBuilder
+                //.UseLazyLoadingProxies()
+                .UseNpgsql("Server = localhost; Port = 5432; Database = StudentPlusDb; User Id = postgres; Password = 123;"); //ConfigurationManager.AppSettings.Get("PgSqlConnectionString")
         }
     }
 }

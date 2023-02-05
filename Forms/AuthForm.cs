@@ -1,4 +1,4 @@
-using StudentPlusDemoProject.Context;
+using StudentPlusDemoProject.Contexts;
 
 namespace StudentPlusDemoProject
 {
@@ -16,18 +16,17 @@ namespace StudentPlusDemoProject
 
         private void guna2ButtonAuth_Click(object sender, EventArgs e)
         {
-            try 
+            try //incapsulate this in object
             {
                 using var context = new StudentContext();
                 var username = context
                     .Users
                     .Single(user => user.Username.Equals(guna2TextBox1.Text)
-                    && user.Password.Equals(int.Parse(guna2TextBox2.Text)));
-                guna2ButtonAuth.Text = "DASDASD";
+                    && user.Password.Equals(int.Parse(guna2TextBox2.Text)));                
             }
             catch(Exception ex)
             {
-                //show here gunamessbox
+                guna2MessageDialog1.Show();
             }
             
         }
