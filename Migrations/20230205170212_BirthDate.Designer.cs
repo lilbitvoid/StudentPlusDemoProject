@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StudentPlusDemoProject.Contexts;
@@ -11,9 +12,11 @@ using StudentPlusDemoProject.Contexts;
 namespace StudentPlusDemoProject.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    partial class StudentContextModelSnapshot : ModelSnapshot
+    [Migration("20230205170212_BirthDate")]
+    partial class BirthDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,12 +51,7 @@ namespace StudentPlusDemoProject.Migrations
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
 
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
 
                     b.ToTable("Absenteeism");
                 });
@@ -110,12 +108,7 @@ namespace StudentPlusDemoProject.Migrations
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
 
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
 
                     b.ToTable("Grades");
                 });
@@ -214,7 +207,13 @@ namespace StudentPlusDemoProject.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("AbsenteeismId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("ContactInfoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("GradeId")
                         .HasColumnType("integer");
 
                     b.Property<int>("StudentGroupId")
@@ -225,7 +224,11 @@ namespace StudentPlusDemoProject.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AbsenteeismId");
+
                     b.HasIndex("ContactInfoId");
+
+                    b.HasIndex("GradeId");
 
                     b.HasIndex("StudentGroupId");
 
@@ -292,20 +295,6 @@ namespace StudentPlusDemoProject.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StudentPlusDemoProject.Models.Absenteeism", b =>
-                {
-                    b.HasOne("StudentPlusDemoProject.Models.Student", null)
-                        .WithMany("Absenteeisms")
-                        .HasForeignKey("StudentId");
-                });
-
-            modelBuilder.Entity("StudentPlusDemoProject.Models.Grade", b =>
-                {
-                    b.HasOne("StudentPlusDemoProject.Models.Student", null)
-                        .WithMany("Grades")
-                        .HasForeignKey("StudentId");
-                });
-
             modelBuilder.Entity("StudentPlusDemoProject.Models.Lesson", b =>
                 {
                     b.HasOne("StudentPlusDemoProject.Models.Grade", null)
@@ -326,11 +315,19 @@ namespace StudentPlusDemoProject.Migrations
 
             modelBuilder.Entity("StudentPlusDemoProject.Models.Student", b =>
                 {
+                    b.HasOne("StudentPlusDemoProject.Models.Absenteeism", null)
+                        .WithMany("AbsentStudents")
+                        .HasForeignKey("AbsenteeismId");
+
                     b.HasOne("StudentPlusDemoProject.Models.ContactInfo", "ContactInfo")
                         .WithMany()
                         .HasForeignKey("ContactInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("StudentPlusDemoProject.Models.Grade", null)
+                        .WithMany("StudentGrades")
+                        .HasForeignKey("GradeId");
 
                     b.HasOne("StudentPlusDemoProject.Models.Group", "StudentGroup")
                         .WithMany()
@@ -370,16 +367,16 @@ namespace StudentPlusDemoProject.Migrations
                     b.Navigation("TeacherPerson");
                 });
 
+            modelBuilder.Entity("StudentPlusDemoProject.Models.Absenteeism", b =>
+                {
+                    b.Navigation("AbsentStudents");
+                });
+
             modelBuilder.Entity("StudentPlusDemoProject.Models.Grade", b =>
                 {
                     b.Navigation("LessonGrade");
-                });
 
-            modelBuilder.Entity("StudentPlusDemoProject.Models.Student", b =>
-                {
-                    b.Navigation("Absenteeisms");
-
-                    b.Navigation("Grades");
+                    b.Navigation("StudentGrades");
                 });
 #pragma warning restore 612, 618
         }

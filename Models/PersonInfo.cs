@@ -9,6 +9,7 @@ public class PersonInfo
     public string PersonName { get; set; }
     public string Surename { get; set; }
     public string Middlename { get; set; }
+    public DateOnly BirthDate { get; set; }
     public Gender PersonGender { get; set; }
     public bool IsOrphan { get; set; }
     public string PhotoPath { get; set; }
