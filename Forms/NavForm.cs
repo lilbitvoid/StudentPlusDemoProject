@@ -24,7 +24,12 @@ namespace StudentPlusDemoProject.Forms
 
         private void guna2ButtonStudentsAbs_Click(object sender, EventArgs e)
         {
+            new StudentListForm().Show();
+        }
 
+        private void guna2ButtonAbs_Click(object sender, EventArgs e)
+        {
+            new AbsForm().Show();
         }
     }
 }

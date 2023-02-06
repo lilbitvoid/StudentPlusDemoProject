@@ -34,6 +34,7 @@ namespace StudentPlusDemoProject.Forms
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            checkedListBoxAbsStudent.Items.Clear();
             using var context = new StudentContext();
             var studentsData = context
                 .Students

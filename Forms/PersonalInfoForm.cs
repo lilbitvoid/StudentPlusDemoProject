@@ -86,7 +86,7 @@ namespace StudentPlusDemoProject.Forms
             {
                 string filePath = saveFileDialog.FileName;
                 pdfDocument.SaveAs(filePath);
-
+                guna2MessageDialog1.Show();
             }
         }
     }

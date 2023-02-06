@@ -1,4 +1,5 @@
 using StudentPlusDemoProject.Contexts;
+using StudentPlusDemoProject.Forms;
 
 namespace StudentPlusDemoProject
 {
@@ -22,7 +23,11 @@ namespace StudentPlusDemoProject
                 var username = context
                     .Users
                     .Single(user => user.Username.Equals(guna2TextBox1.Text)
-                    && user.Password.Equals(int.Parse(guna2TextBox2.Text)));                
+                    && user.Password.Equals(int.Parse(guna2TextBox2.Text)));
+                new NavForm().ShowDialog();
+                this.Hide();
+                this.Close();
+                
             }
             catch(Exception ex)
             {

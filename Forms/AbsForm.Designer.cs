@@ -41,6 +41,7 @@
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ButtonSendReport = new Guna.UI2.WinForms.Guna2Button();
             this.guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -55,7 +56,7 @@
             this.guna2ControlBox1.CustomizableEdges = customizableEdges5;
             this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(754, 12);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(493, 12);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             this.guna2ControlBox1.Size = new System.Drawing.Size(34, 31);
@@ -68,7 +69,7 @@
             this.checkedListBoxAbsStudent.FormattingEnabled = true;
             this.checkedListBoxAbsStudent.Location = new System.Drawing.Point(0, 0);
             this.checkedListBoxAbsStudent.Name = "checkedListBoxAbsStudent";
-            this.checkedListBoxAbsStudent.Size = new System.Drawing.Size(246, 450);
+            this.checkedListBoxAbsStudent.Size = new System.Drawing.Size(246, 591);
             this.checkedListBoxAbsStudent.TabIndex = 13;
             // 
             // guna2ComboBox1
@@ -82,7 +83,7 @@
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(276, 23);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(316, 21);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             this.guna2ComboBox1.Size = new System.Drawing.Size(140, 36);
@@ -91,6 +92,8 @@
             // 
             // guna2ButtonSendReport
             // 
+            this.guna2ButtonSendReport.Animated = true;
+            this.guna2ButtonSendReport.BorderRadius = 10;
             this.guna2ButtonSendReport.CustomizableEdges = customizableEdges1;
             this.guna2ButtonSendReport.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2ButtonSendReport.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -103,7 +106,7 @@
             this.guna2ButtonSendReport.ShadowDecoration.CustomizableEdges = customizableEdges2;
             this.guna2ButtonSendReport.Size = new System.Drawing.Size(180, 45);
             this.guna2ButtonSendReport.TabIndex = 15;
-            this.guna2ButtonSendReport.Text = "guna2ButtonSendReport";
+            this.guna2ButtonSendReport.Text = "Send report";
             this.guna2ButtonSendReport.Click += new System.EventHandler(this.guna2ButtonSendReport_Click);
             // 
             // guna2MessageDialog1
@@ -115,20 +118,33 @@
             this.guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
             this.guna2MessageDialog1.Text = "Are you sure to send report?";
             // 
+            // guna2HtmlLabel3
+            // 
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.guna2HtmlLabel3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(258, 25);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(47, 23);
+            this.guna2HtmlLabel3.TabIndex = 16;
+            this.guna2HtmlLabel3.Text = "Group";
+            // 
             // AbsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(539, 591);
+            this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2ButtonSendReport);
             this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.checkedListBoxAbsStudent);
             this.Controls.Add(this.guna2ControlBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AbsForm";
-            this.Text = "AbsForm";
+            this.Text = "Absenteeism";
             this.Load += new System.EventHandler(this.AbsForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -140,5 +156,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2ButtonSendReport;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
     }
 }
